@@ -140,6 +140,7 @@ export default{
       const p = Math.round(new Date().getTime())
       // 商品倒计时
       for (let i = 0; i < this.pro.length; i++) {
+        this.pro[i].started_at = this.pro[i].started_at.replace(/\-/g, '/') // 修复ios上显示NAN的BUG
         this.$set(this.pro[i], 'd', Math.floor((Date.parse(this.pro[i].started_at) - p) / 1000 / 60 / 60 / 24))
         this.$set(this.pro[i], 'h', Math.floor((Date.parse(this.pro[i].started_at) - p) / 1000 / 60 / 60 % 24))
         this.$set(this.pro[i], 'm', Math.floor((Date.parse(this.pro[i].started_at) - p) / 1000 / 60 % 60))
